@@ -1,6 +1,6 @@
 package com.delivery.drones.domain;
 
-import com.delivery.drones.Constants;
+import com.delivery.drones.constants.Constants;
 
 public class CruiserWeightDrone extends AbstractDrone {
 
