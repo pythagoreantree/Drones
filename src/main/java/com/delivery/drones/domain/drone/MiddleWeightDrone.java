@@ -1,6 +1,7 @@
-package com.delivery.drones.domain;
+package com.delivery.drones.domain.drone;
 
 import com.delivery.drones.constants.Constants;
+import com.delivery.drones.domain.identifiers.SerialNumber;
 
 public class MiddleWeightDrone extends AbstractDrone {
 
