@@ -1,15 +1,17 @@
-package com.delivery.drones.domain;
+package com.delivery.drones.domain.drone;
+
+import com.delivery.drones.domain.identifiers.SerialNumber;
 
 public abstract class AbstractDrone implements Drone {
 
     /*
     * Properties Section
     * */
-    SerialNumber serialNumber;
+    public final SerialNumber serialNumber;
 
-    DroneState state = DroneState.IDLE;
+    public DroneState state = DroneState.IDLE;
 
-    double batteryCapacity = 1.0;
+    public double batteryCapacity = 1.0;
 
     protected AbstractDrone(SerialNumber serialNumber) {
         this.serialNumber = serialNumber;
@@ -20,10 +22,6 @@ public abstract class AbstractDrone implements Drone {
     * */
     public SerialNumber getSerialNumber() {
         return serialNumber;
-    }
-
-    public void setSerialNumber(SerialNumber serialNumber) {
-        this.serialNumber = serialNumber;
     }
 
     public abstract double getWeightLimit();

@@ -1,4 +1,4 @@
-package com.delivery.drones.domain;
+package com.delivery.drones.domain.drone;
 
 public enum DroneState {
     IDLE,
