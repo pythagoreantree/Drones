@@ -12,10 +12,14 @@ import java.util.List;
 @Service
 public class DronesService {
 
-    @Autowired
-    DronesRepository dronesRepo;
+    final DronesRepository dronesRepo;
 
-    public Drone addDrone(Drone drone) {
+    @Autowired
+    public DronesService(DronesRepository dronesRepo) {
+        this.dronesRepo = dronesRepo;
+    }
+
+    public void addDrone(Drone drone) {
 
         //here check by serialNumber if exists
 
@@ -23,13 +27,12 @@ public class DronesService {
             //error length mush be less than 100 characters
         }
         dronesRepo.save(drone);
-        return drone;
     }
 
     public List<Drone> getDrones() {
 
-        List<Drone> dronesList = new ArrayList<Drone>();
-        dronesRepo.findAll().forEach(drone -> dronesList.add(drone));
+        List<Drone> dronesList = new ArrayList<>();
+        dronesRepo.findAll().forEach(dronesList::add);
         return dronesList;
         /*return List.of(
                 new Drone("A1", "LIGHTWEIGHT", 15)
