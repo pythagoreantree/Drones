@@ -16,15 +16,15 @@ import java.io.IOException;
 * */
 public class Medication {
 
-    public String name;
+    private String name;
 
-    public final double weight;
+    private final Double weight;
 
-    public final MedicationCode code;
+    private final MedicationCode code;
 
-    protected String imagePath = "/images/no-image-icon-1.jpg";
+    private String imagePath = "/images/no-image-icon-1.jpg";
 
-    public BufferedImage image;
+    private BufferedImage image;
 
     public Medication(String name, MedicationCode code, double weight) {
         this.name = name;
@@ -48,7 +48,7 @@ public class Medication {
         this.name = name;
     }
 
-    public double getWeight() {
+    public Double getWeight() {
         return weight;
     }
 
