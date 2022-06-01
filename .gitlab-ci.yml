@@ -20,12 +20,6 @@ unit-test-job:   # This job runs in the test stage.
   script:
     - echo "Running unit tests... This will take about 60 seconds."
     - mvn $MAVEN_CLI_OPTS test
-  artifacts:
-    when: always
-    reports:
-      junit:
-          - target/surfire-reports/TEST-*.xml
-          - target/failsafe-reports/TEST-*.xml
 
 lint-test-job:   # This job also runs in the test stage.
   stage: test    # It can run at the same time as unit-test-job (in parallel).
