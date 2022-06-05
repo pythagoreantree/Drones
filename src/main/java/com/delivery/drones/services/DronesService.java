@@ -27,6 +27,7 @@ public class DronesService {
     }
 
     public List<Drone> getDrones() {
+        //need to test ci with cache
         List<Drone> dronesList = new ArrayList<Drone>();
 //        dronesRepo.findAll().forEach(drone -> dronesList.add(drone));
         return dronesList;
