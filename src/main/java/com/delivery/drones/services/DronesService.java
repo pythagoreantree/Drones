@@ -27,12 +27,11 @@ public class DronesService {
     }
 
     public List<Drone> getDrones() {
-
         List<Drone> dronesList = new ArrayList<Drone>();
-        dronesRepo.findAll().forEach(drone -> dronesList.add(drone));
+//        dronesRepo.findAll().forEach(drone -> dronesList.add(drone));
         return dronesList;
-        /*return List.of(
-                new Drone("A1", "LIGHTWEIGHT", 15)
-        );*/
+//        return List.of(
+//                new Drone("A1", "LIGHTWEIGHT", 15)
+//        );
     }
 }
