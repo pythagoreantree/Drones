@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: drones-app-deployment
+spec:
+  selector:
+    matchLabels:
+      app: drones-app
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: drones-app
+    spec:
+      containers:
+        - name: drones-app
+          image: pythagoreantree/drones-project:v.2.0
+          ports:
+            - containerPort: 8080
+          env:   # Setting Enviornmental Variables
+            - name: POSTGRES_HOST   # Setting Database host address from configMap
+              valueFrom:
+                configMapKeyRef:
+                  name: postgres-config
+                  key: postgres_host
+            - name: POSTGRES_DB  # Setting Database name from configMap
+              valueFrom:
+                configMapKeyRef:
+                  name: postgres-config
+                  key: postgres_db
+            - name: POSTGRES_USERNAME  # Setting Database username from Secret
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secrets
+                  key: postgres_user
+            - name: POSTGRES_PASSWORD # Setting Database password from Secret
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secrets
+                  key: postgres_password
