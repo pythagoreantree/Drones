@@ -2,15 +2,18 @@ package com.delivery.drones.domain.drone;
 
 import com.delivery.drones.domain.drone.enums.DroneState;
 import com.delivery.drones.domain.drone.enums.DroneType;
+import com.delivery.drones.domain.medication.Medication;
 import lombok.AllArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table( name = "drone",
         uniqueConstraints = {
             @UniqueConstraint(name="serial_number_unique_constraint", columnNames = "serial_number")
-})
+        }
+)
 @AllArgsConstructor
 public class Drone implements DroneI {
 
@@ -22,20 +25,20 @@ public class Drone implements DroneI {
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "serial_number", nullable = false)
+    @Column(name = "serial_number", nullable = false, updatable = false)
     private String serialNumber;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "type", nullable = false)
+    @Column(name = "type", nullable = false, updatable = false)
     private DroneType type;
 
-    @Column(name = "capacity")
+    @Transient
     private Double capacity;
 
     @Column(name = "workload")
     private Double workload;
 
-    @Column(name = "battery_capacity", nullable = false)
+    @Column(name = "battery_capacity", nullable = false, updatable = false)
     private Integer batteryCapacity;
 
     @Column(name = "battery_level")
@@ -45,6 +48,8 @@ public class Drone implements DroneI {
     @Column(name = "state")
     private DroneState state = DroneState.IDLE;
 
+    @OneToMany(mappedBy = "droneId", fetch = FetchType.LAZY)
+    private List<Medication> medications;
     /*
     * Constructors
     * */
@@ -125,5 +130,13 @@ public class Drone implements DroneI {
 
     public void setState(DroneState state) {
         this.state = state;
+    }
+
+    public List<Medication> getMedications() {
+        return medications;
+    }
+
+    public void setMedications(List<Medication> medications) {
+        this.medications = medications;
     }
 }
