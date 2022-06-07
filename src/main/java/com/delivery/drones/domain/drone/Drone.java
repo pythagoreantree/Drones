@@ -32,11 +32,11 @@ public class Drone implements DroneI {
     @Column(name = "type", nullable = false, updatable = false)
     private DroneType type;
 
-    @Transient
+    @Column(name = "capacity")
     private Double capacity;
 
     @Column(name = "workload")
-    private Double workload;
+    private Double workload = 0.0;
 
     @Column(name = "battery_capacity", nullable = false, updatable = false)
     private Integer batteryCapacity;
@@ -57,6 +57,7 @@ public class Drone implements DroneI {
         this.serialNumber = serialNumber;
         this.type = DroneType.valueOf(type);
         this.batteryCapacity = batteryCapacity;
+        this.capacity = DroneType.valueOf(type).getCapacity();
     }
 
     public Drone() {
@@ -138,5 +139,9 @@ public class Drone implements DroneI {
 
     public void setMedications(List<Medication> medications) {
         this.medications = medications;
+    }
+
+    public void addWorkload(Double weight) {
+        this.workload += weight;
     }
 }
