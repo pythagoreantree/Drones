@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.imageio.ImageIO;
 import javax.persistence.*;
+import javax.persistence.criteria.CriteriaBuilder;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -25,7 +26,6 @@ import java.io.IOException;
         }
 )
 @AllArgsConstructor
-@NoArgsConstructor
 public class Medication {
 
     @Id
@@ -41,14 +41,21 @@ public class Medication {
     @Column(name = "weight")
     private Double weight;
 
-    @Column(name = "drone_id")
-    private Long droneId;
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "drone_id", insertable = false, updatable = false)
-    private Drone drone;
-
+    @Column(name = "image_url")
     private String imagePath = "/images/no-image-icon-1.jpg";
+
+    @Column(name = "drone_id")
+    private Integer droneId;
+
+    public Medication(String name, String code, Double weight){
+        this.name = name;
+        this.code = code;
+        this.weight = weight;
+    }
+
+    public Medication() {
+
+    }
 
     public Long getId() {
         return id;
@@ -90,20 +97,12 @@ public class Medication {
         this.imagePath = imagePath;
     }
 
-    public Long getDroneId() {
+    public Integer getDroneId() {
         return droneId;
     }
 
-    public void setDroneId(Long droneId) {
+    public void setDroneId(Integer droneId) {
         this.droneId = droneId;
-    }
-
-    public Drone getDrone() {
-        return drone;
-    }
-
-    public void setDrone(Drone drone) {
-        this.drone = drone;
     }
 
     //    private BufferedImage image;
