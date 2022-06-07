@@ -5,21 +5,20 @@ import com.delivery.drones.constants.Constants;
 import static com.delivery.drones.constants.Constants.*;
 
 public enum DroneType {
-    LIGHTWEIGHT("LightWeight", LIGHTWEIGHT_DRONE_WEIGHT_LIMIT),
-    MIDDLEWEIGHT("MiddleWeight", MIDDLEWEIGHT_DRONE_WEIGHT_LIMIT),
-    CRUISERWEIGHT("CruiserWeight", CRUISERWEIGHT_DRONE_WEIGHT_LIMIT),
-    HEAVYWEIGHT("HeavyWeight", HEAVYWEIGHT_DRONE_WEIGHT_LIMIT);
+    lightweight("lightweight", LIGHTWEIGHT_DRONE_WEIGHT_LIMIT),
+    middleweight("middleweight", MIDDLEWEIGHT_DRONE_WEIGHT_LIMIT),
+    heavyweight("heavyweight", HEAVYWEIGHT_DRONE_WEIGHT_LIMIT);
 
     String typeName;
 
-    Double weightLimit;
+    Double capacity;
 
     DroneType(String name, Double limit) {
         this.typeName = name;
-        this.weightLimit = limit;
+        this.capacity = limit;
     }
 
-    public Double getWeightLimit() {
-        return weightLimit;
+    public Double getCapacity() {
+        return capacity;
     }
 }

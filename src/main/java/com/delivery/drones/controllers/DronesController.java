@@ -4,10 +4,9 @@ import com.delivery.drones.domain.drone.Drone;
 import com.delivery.drones.services.DronesService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class DronesController {
@@ -21,8 +20,8 @@ public class DronesController {
     }
 
     @PostMapping("api/drones/registerDrone")
-    public String registerDrone(@RequestBody Drone drone){
+    public ResponseEntity<String> registerDrone(@RequestBody Drone drone){
         dronesService.addDrone(drone);
-        return "Drone is registered";
+        return new ResponseEntity<>("Drone is registered", HttpStatus.OK);
     }
 }

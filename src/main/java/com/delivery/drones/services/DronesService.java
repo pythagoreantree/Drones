@@ -22,12 +22,10 @@ public class DronesService {
         if (!SerialNumber.isValid(drone.getSerialNumber())){
             //error length mush be less than 100 characters
         }
-        dronesRepo.save(drone);
-        return drone;
+        return dronesRepo.save(drone);
     }
 
     public List<Drone> getDrones() {
-        //need to test ci with cache - 3
         List<Drone> dronesList = new ArrayList<Drone>();
 //        dronesRepo.findAll().forEach(drone -> dronesList.add(drone));
         return dronesList;

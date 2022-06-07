@@ -2,12 +2,16 @@ package com.delivery.drones.domain.drone;
 
 import com.delivery.drones.domain.drone.enums.DroneState;
 import com.delivery.drones.domain.drone.enums.DroneType;
-import com.delivery.drones.domain.identifiers.SerialNumber;
+import lombok.AllArgsConstructor;
 
 import javax.persistence.*;
 
 @Entity
-@Table
+@Table( name = "drone",
+        uniqueConstraints = {
+            @UniqueConstraint(name="serial_number_unique_constraint", columnNames = "serial_number")
+})
+@AllArgsConstructor
 public class Drone implements DroneI {
 
     /*
@@ -18,14 +22,20 @@ public class Drone implements DroneI {
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "serial_number")
+    @Column(name = "serial_number", nullable = false)
     private String serialNumber;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "type")
+    @Column(name = "type", nullable = false)
     private DroneType type;
 
-    @Column(name = "battery_capacity")
+    @Column(name = "capacity")
+    private Double capacity;
+
+    @Column(name = "workload")
+    private Double workload;
+
+    @Column(name = "battery_capacity", nullable = false)
     private Integer batteryCapacity;
 
     @Column(name = "battery_level")
@@ -35,23 +45,18 @@ public class Drone implements DroneI {
     @Column(name = "state")
     private DroneState state = DroneState.IDLE;
 
-    public Drone(String serialNumber) {
+    /*
+    * Constructors
+    * */
+    public Drone(String serialNumber, String type, Integer batteryCapacity){
         this.serialNumber = serialNumber;
-    }
-
-    public Drone(String serialNumber, DroneType type, Integer batteryCapacity){
-        this.serialNumber = serialNumber;
-        this.type = type;
+        this.type = DroneType.valueOf(type);
         this.batteryCapacity = batteryCapacity;
     }
 
-    public Drone(String serialNumber, String droneType, Integer batteryCapacity) {
-        this.serialNumber = serialNumber;
-        this.type = DroneType.valueOf(droneType);
-        this.batteryCapacity = batteryCapacity;
-    }
+    public Drone() {
 
-    public Drone() {}
+    }
 
     /*
     * Methods Section
@@ -68,6 +73,10 @@ public class Drone implements DroneI {
         return serialNumber;
     }
 
+    public void setSerialNumber(String serialNumber) {
+        this.serialNumber = serialNumber;
+    }
+
     public DroneType getType() {
         return type;
     }
@@ -76,18 +85,29 @@ public class Drone implements DroneI {
         this.type = type;
     }
 
+    public Double getCapacity() {
+        if(type == null) return 0.0;
+        return type.getCapacity();
+    }
+
+    public void setCapacity(Double capacity) {
+        this.capacity = capacity;
+    }
+
+    public Double getWorkload() {
+        return workload;
+    }
+
+    public void setWorkload(Double workload) {
+        this.workload = workload;
+    }
+
     public Integer getBatteryCapacity() {
         return batteryCapacity;
     }
 
     public void setBatteryCapacity(Integer batteryCapacity) {
         this.batteryCapacity = batteryCapacity;
-    }
-
-    @Override
-    public Double getWeightLimit() {
-        if(type == null) return 0.0;
-        return type.getWeightLimit();
     }
 
     @Override
