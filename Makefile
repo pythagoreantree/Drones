@@ -35,11 +35,9 @@ docker-run-app:
     -e POSTGRES_USERNAME=postgres -e POSTGRES_PASSWORD=postgres \
     -p 8080:8080 java-drones
 
-docker-start-app-server: docker-build-app docker-run-app
+docker-start-app: docker-build-app docker-run-app
 
 docker-first-start-app: docker-init-db docker-start-app-server
-
-docker-start-app: docker-run-db docker-start-app-server
 
 docker-compose-app:
 	docker-compose up -d --build

@@ -10,8 +10,8 @@ The full list of requirements for the project you can find in the requirements.m
 There are four ways to launch the application: 
 + ***Maven***
 + ***Docker***
-+ with ***docker-compose***.yml file
-+ ***Kubernetes*** cluster
++ ***docker-compose***
++ ***Kubernetes***
 
 As database foo this project is configured only in a docker container, you need to have docker installed on your local machine to run the application. 
 You may install docker from [here](https://docs.docker.com/desktop/).
@@ -19,7 +19,9 @@ You may install docker from [here](https://docs.docker.com/desktop/).
 
 I've created commands in a Makefile to make the process easier.
 
-###Database Initialization
+###Database Initialization 
+
+Do it before Maven or Docker commands (not docker-compose).
 
 To init the posgres database for the project
 
@@ -47,9 +49,26 @@ To **start** the application (without tests):
 make maven-start-app
 ```
 
-
 ###Docker
 
+To **start** the application:
+
+```
+make docker-start-app
+```
+
 ###docker-compose
+
+To **start** the application:
+
+```
+make docker-compose-app
+```
+
+To **stop** the application:
+
+```
+make docker-compose-down
+```
 
 ###Kubernetes
