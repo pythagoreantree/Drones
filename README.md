@@ -1,35 +1,55 @@
 ## Drones
+___
+
+This is a simple REST API Spring Boot application that simulates the delivery of medicines by drones.  
+
+The full list of requirements for the project you can find in the requirements.md file.
 
 ---
 
-### Introduction
+There are four ways to launch the application: 
++ ***Maven***
++ ***Docker***
++ with ***docker-compose***.yml file
++ ***Kubernetes*** cluster
 
-There is a major new technology that is destined to be a disruptive force in the field of transportation: **the drone**. Just as the mobile phone allowed developing countries to leapfrog older technologies for personal communication, the drone has the potential to leapfrog traditional transportation infrastructure.
+As database foo this project is configured only in a docker container, you need to have docker installed on your local machine to run the application. 
+You may install docker from [here](https://docs.docker.com/desktop/).
 
-Useful drone functions include delivery of small items that are (urgently) needed in locations with difficult access.
 
----
+I've created commands in a Makefile to make the process easier.
 
-### Task description
+###Database Initialization
 
-We have a fleet of **10 drones**. A drone is capable of carrying devices, other than cameras, and capable of delivering small loads. For our use case **the load is medications**.
+To init the posgres database for the project
 
-A **Drone** has:
-- serial number (100 characters max);
-- model (Lightweight, Middleweight, Cruiserweight, Heavyweight);
-- weight limit (500gr max);
-- battery capacity (percentage);
-- state (IDLE, LOADING, LOADED, DELIVERING, DELIVERED, RETURNING).
+```
+make docker-init-db
+```
 
-Each **Medication** has: 
-- name (allowed only letters, numbers, ‘-‘, ‘_’);
-- weight;
-- code (allowed only upper case letters, underscore and numbers);
-- image (picture of the medication case). 
+###Maven
 
-The service should allow:
-- registering a drone;
-- loading a drone with medication items;
-- checking loaded medication items for a given drone; 
-- checking available drones for loading;
-- check drone battery level for a given drone;
+To **package** the application:
+
+```
+make maven-setup
+```
+
+To **test** the application:
+
+```
+make maven-run-tests
+```
+
+To **start** the application (without tests):
+
+```
+make maven-start-app
+```
+
+
+###Docker
+
+###docker-compose
+
+###Kubernetes
