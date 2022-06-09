@@ -42,6 +42,6 @@ docker-first-start-app: docker-init-db docker-start-app-server
 docker-compose-app:
 	docker-compose up -d --build
 
-docker-compose-down:
+docker-decompose-app:
 	docker-compose down
 
