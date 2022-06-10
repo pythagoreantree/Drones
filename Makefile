@@ -6,7 +6,10 @@ maven-setup:
 maven-run-tests:
 	./mvnw test
 
-maven-start-app: maven-setup
+maven-start-app-h2: maven-setup
+	./mvnw spring-boot:run -Dspring-boot.run.profiles=dnodb
+
+maven-start-app-postgres: maven-setup
 	./mvnw spring-boot:run -Dspring-boot.run.profiles=dev
 
 docker-init:
@@ -20,8 +23,6 @@ docker-run-db:
     -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=postgres \
     -e POSTGRES_DB=postgres \
     -p 5432:5432 postgres
-
-docker-init-db: docker-init docker-run-db
 
 docker-build-app:
 	docker build -t java-drones --target development .

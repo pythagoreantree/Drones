@@ -13,23 +13,36 @@ There are four ways to launch the application:
 + ***docker-compose***
 + ***Kubernetes***
 
-As a database for this project is configured in a docker container only, you need to have docker installed on your local machine to run the application. 
-You may install docker from [here](https://docs.docker.com/desktop/).
-
-
 I've created commands in a Makefile to make the process easier.
 
-###Database Initialization 
+You may configure the application to use in-memory H2 database or Postgres in a docker container. 
+You may install docker from [here](https://docs.docker.com/desktop/).
 
-Do it before maven or docker commands (not docker-compose).
+If you use in-memory database, you do not need any additional configurations.
+If you use postgres, you need to pre-configure docker to launch a database in a container.
 
-To init a posgres database for the project
+####Docker Init
+
+To start the application with Postgres:
+
+> first you need to pre-configure docker. Do it one time for the project.
+Otherwise data will be lost. It creates volume to store your database data.
 
 ```
-make docker-init-db
+make docker-init
 ```
 
-###Maven
+####Run the Postgres
+> then run the postgres database
+
+```
+make docker-run-db
+```
+
+
+###Maven 
+
+####Maven General 
 
 To package the application:
 
@@ -43,10 +56,20 @@ To run tests:
 make maven-run-tests
 ```
 
-To start the application (without tests):
+####Maven with H2
+
+To start the application with H2 database:
 
 ```
-make maven-start-app
+make maven-start-app-h2
+```
+
+####Maven with Postgres
+
+To start the application with postgres database:
+
+```
+make maven-start-app-postgres
 ```
 
 ###Docker
@@ -58,6 +81,10 @@ make docker-start-app
 ```
 
 ###docker-compose
+
+You do not need any pre-configurations for this type of launch.
+The project will be set with an instance of Postgres database.
+No docker-init is needed. Just start the application.
 
 To start the application:
 
