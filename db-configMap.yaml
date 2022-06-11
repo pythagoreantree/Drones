@@ -4,4 +4,4 @@ metadata:
   name: postgres-config
 data:
   postgres_host: postgres
-  postgres_db: dronesdb
+  postgres_db: postgres

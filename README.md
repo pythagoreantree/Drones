@@ -39,7 +39,6 @@ make docker-init
 make docker-run-db
 ```
 
-
 ###Maven 
 
 ####Maven General 
@@ -72,12 +71,26 @@ To start the application with postgres database:
 make maven-start-app-postgres
 ```
 
+Reach the application:
+
+```
+http://localhost:8080/ or http://localhost:8080/home
+```
+
 ###Docker
+
+Before starting the application you need to perform Docker Init and Run the Postgres steps.
 
 To start the application:
 
 ```
 make docker-start-app
+```
+
+Reach the application:
+
+```
+http://localhost:8080/ or http://localhost:8080/home
 ```
 
 ###docker-compose
@@ -98,4 +111,43 @@ To stop the application:
 make docker-decompose-app
 ```
 
+Reach the application:
+
+```
+http://localhost:8080/ or http://localhost:8080/home
+```
+
 ###Kubernetes
+
+To start working with Kubernetes you need
++ [kubectl](https://kubernetes.io/docs/tasks/tools/)
++ kubernetes cluster, for example [minikube](https://kubernetes.io/ru/docs/tasks/tools/install-minikube/)
+
+No Docker Init or Run Postgres is need. Just run the command.
+
+After all installation you may launch the application in cluster with command:
+
+```
+make k8s-start
+```
+
+Some time pass before pods will be up.
+After that you find out the server ip with command in your Terminal:
+
+```
+minikube ip
+```
+
+And you need the port. You can find it in PORT(s) after '8080:'
+
+```
+kubectl get service drones-app-service
+```
+
+With this ip and port you can reach the application:
+
+```
+http://ip:port/ or http://ip:port/home
+```
+
+If you can't do it, check the vm-driver for minikube and/or the app image in the app-deployments file.

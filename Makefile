@@ -46,3 +46,33 @@ docker-compose-app:
 docker-decompose-app:
 	docker-compose down
 
+docker-build-n-push-2hub:
+	docker build -t pythagoreantree/drones-project:v.3.0 --target development .
+	docker push pythagoreantree/drones-project:v.3.0
+
+k8s-start-minikube:
+	minikube start --vm-driver=hyperkit
+	eval $(minikube docker-env)
+
+k8s-start-db:
+	kubectl apply -f db-configMap.yaml
+	kubectl apply -f db-secrets.yaml
+	kubectl apply -f db-persistentVolumeClaim.yaml
+	kubectl apply -f db-deployment.yaml
+	kubectl apply -f db-service.yaml
+
+k8s-start-app:
+	kubectl apply -f app-deployment.yaml
+	kubectl apply -f app-service.yaml
+
+k8s-unset-minikube:
+	minikube stop
+	eval $(minikube docker-env -u)
+
+k8s-delete-minikube:
+	minikube delete
+
+k8s-start: k8s-start-minikube k8s-start-db k8s-start-app
+
+
+
