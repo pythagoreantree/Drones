@@ -21,7 +21,7 @@ ___
 
 ### Run the Postgres
 
-To run the postgres database:
+To run the Postgres database:
 
 ```
 make docker-run-db type=init
@@ -61,7 +61,7 @@ make maven-start-app-h2
 
 #### Maven with Postgres
 
-To start the application with postgres database:
+To start the application with Postgres database:
 
 ```
 make maven-start-app-postgres
@@ -105,7 +105,7 @@ ___
 
 You do not need any pre-configurations for this type of launch.
 The project will be set with an instance of Postgres database.
-No additional postgres run is needed. Just start the application.
+No additional Postgres Run is needed. Just start the application.
 
 To start the application:
 
@@ -132,7 +132,7 @@ To start working with Kubernetes you need:
 + [kubectl](https://kubernetes.io/docs/tasks/tools/)
 + kubernetes cluster, for example [minikube](https://kubernetes.io/ru/docs/tasks/tools/install-minikube/)
 
-No additional postgres run is need. Just run the command.
+No additional Postgres Run is need. Just run the command.
 
 After all installations you may launch the application in a cluster with the command:
 
