@@ -24,6 +24,14 @@ endif
     -e POSTGRES_DB=postgres \
     -p 5432:5432 postgres
 
+docker-build-app-h2:
+	docker build -t java-drones --target devnodb .
+
+docker-run-app-h2:
+	docker run --rm -d --name drones-app --network drones-net -p 8080:8080 java-drones
+
+docker-start-app-h2: docker-build-app-h2 docker-run-app-h2
+
 docker-build-app:
 	docker build -t java-drones --target development .
 

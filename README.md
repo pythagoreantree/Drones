@@ -71,7 +71,15 @@ Reach the application:
 http://localhost:8080/ or http://localhost:8080/home
 ```
 
-###Docker
+###Docker with H2
+
+To start the application:
+
+```
+make docker-start-app-h2
+```
+
+###Docker with Postgres
 
 Before starting the application you need to perform Run the Postgres step.
 
