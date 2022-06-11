@@ -18,7 +18,7 @@ I've created commands in a Makefile to make the process easier.
 You may configure the application to use in-memory H2 database or Postgres in a docker container. 
 You may install docker from [here](https://docs.docker.com/desktop/).
 
-####Run the Postgres
+### Run the Postgres
 
 To run the postgres database:
 
@@ -71,7 +71,9 @@ Reach the application:
 http://localhost:8080/ or http://localhost:8080/home
 ```
 
-### Docker with H2
+### Docker 
+
+#### Docker with H2
 
 To start the application:
 
@@ -79,7 +81,7 @@ To start the application:
 make docker-start-app-h2
 ```
 
-### Docker with Postgres
+#### Docker with Postgres
 
 Before starting the application you need to perform Run the Postgres step.
 
