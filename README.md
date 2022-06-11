@@ -72,6 +72,7 @@ Reach the application:
 ```
 http://localhost:8080/ or http://localhost:8080/home
 ```
+___
 
 ### Docker 
 
@@ -98,6 +99,7 @@ Reach the application:
 ```
 http://localhost:8080/ or http://localhost:8080/home
 ```
+___
 
 ### docker-compose
 
@@ -122,6 +124,7 @@ Reach the application:
 ```
 http://localhost:8080/ or http://localhost:8080/home
 ```
+___
 
 ### Kubernetes
 
