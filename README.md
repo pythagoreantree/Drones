@@ -151,3 +151,10 @@ http://ip:port/ or http://ip:port/home
 ```
 
 If you can't do it, check the vm-driver for minikube and/or the app image in the app-deployments file.
+
+___
+
+All the instructions above are made for initial launch of the application (from scratch).
+If you need to dive deeper and start/stop the application, you should have some knowledge in maven, docker or kubernetes.
+
+If you have any questions, contact me in Skype or Telegram: @pythagoreantree
