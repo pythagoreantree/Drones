@@ -17,6 +17,7 @@ I've created commands in a Makefile to make the process easier.
 
 You may configure the application to use in-memory H2 database or Postgres in a docker container. 
 You may install docker from [here](https://docs.docker.com/desktop/).
+___
 
 ### Run the Postgres
 
@@ -32,6 +33,7 @@ Afterwards run it without a type.
 ```
 make docker-run-db
 ```
+___
 
 ### Maven 
 
