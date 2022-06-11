@@ -13,8 +13,11 @@ COPY src ./src
 FROM base as test
 RUN ["./mvnw", "test"]
 
+FROM base as devnodb
+CMD ["./mvnw", "spring-boot:run", "-Dspring-boot.run.profiles=dnodb"]
+
 FROM base as development
-CMD ["./mvnw", "spring-boot:run", "-Dspring-boot.run.profiles=dev"]
+CMD ["./mvnw", "spring-boot:run", "-Dspring-boot.run.profiles=devd"]
 
 FROM base as build
 RUN ./mvnw package

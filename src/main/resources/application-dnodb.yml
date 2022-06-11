@@ -1,0 +1,19 @@
+# Spring Boot configuration
+spring:
+  # Database
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:dronedb
+    username: sa
+    password: password
+  # JPA properties
+  jpa:
+    hibernate:
+      ddl-auto: create-drop # When you launch the application for the first time - switch "none" at "create"
+    show-sql: true
+    database: h2
+    database-platform: org.hibernate.dialect.H2Dialect
+    open-in-view: false
+    generate-ddl: true
+server:
+  port: 8080 #set your port

@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: drones-app
-          image: pythagoreantree/drones-project:v.2.0
+          image: pythagoreantree/drones-project:v.3.0
           ports:
             - containerPort: 8080
           env:   # Setting Enviornmental Variables
