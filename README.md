@@ -105,7 +105,7 @@ ___
 
 You do not need any pre-configurations for this type of launch.
 The project will be set with an instance of Postgres database.
-No docker-init is needed. Just start the application.
+No additional postgres run is needed. Just start the application.
 
 To start the application:
 
@@ -128,26 +128,26 @@ ___
 
 ### Kubernetes
 
-To start working with Kubernetes you need
+To start working with Kubernetes you need:
 + [kubectl](https://kubernetes.io/docs/tasks/tools/)
 + kubernetes cluster, for example [minikube](https://kubernetes.io/ru/docs/tasks/tools/install-minikube/)
 
-No Docker Init or Run Postgres is need. Just run the command.
+No additional postgres run is need. Just run the command.
 
-After all installation you may launch the application in cluster with command:
+After all installations you may launch the application in a cluster with the command:
 
 ```
 make k8s-start
 ```
 
 Some time pass before pods will be up.
-After that you find out the server ip with command in your Terminal:
+After that you may find out the server ip with the command in your Terminal:
 
 ```
 minikube ip
 ```
 
-And you need the port. You can find it in PORT(s) after '8080:'
+And you need the port. You can find it in PORT(s) after '8080:':
 
 ```
 kubectl get service drones-app-service
@@ -164,6 +164,6 @@ If you can't do it, check the vm-driver for minikube and/or the app image in the
 ___
 
 All the instructions above are made for initial launch of the application (from scratch).
-If you need to dive deeper and start/stop the application, you should have some knowledge in maven, docker or kubernetes.
+If you need to dive deeper and start/stop the application, you should have some knowledge in maven, docker and/or kubernetes.
 
 If you have any questions, contact me in Skype or Telegram: @pythagoreantree
