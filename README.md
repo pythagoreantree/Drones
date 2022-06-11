@@ -33,9 +33,9 @@ Afterwards run it without a type.
 make docker-run-db
 ```
 
-###Maven 
+### Maven 
 
-####Maven General 
+#### Maven General 
 
 To package the application:
 
@@ -49,7 +49,7 @@ To run tests:
 make maven-run-tests
 ```
 
-####Maven with H2
+#### Maven with H2
 
 To start the application with H2 database:
 
@@ -57,7 +57,7 @@ To start the application with H2 database:
 make maven-start-app-h2
 ```
 
-####Maven with Postgres
+#### Maven with Postgres
 
 To start the application with postgres database:
 
@@ -71,7 +71,7 @@ Reach the application:
 http://localhost:8080/ or http://localhost:8080/home
 ```
 
-###Docker with H2
+### Docker with H2
 
 To start the application:
 
@@ -79,7 +79,7 @@ To start the application:
 make docker-start-app-h2
 ```
 
-###Docker with Postgres
+### Docker with Postgres
 
 Before starting the application you need to perform Run the Postgres step.
 
@@ -95,7 +95,7 @@ Reach the application:
 http://localhost:8080/ or http://localhost:8080/home
 ```
 
-###docker-compose
+### docker-compose
 
 You do not need any pre-configurations for this type of launch.
 The project will be set with an instance of Postgres database.
@@ -119,7 +119,7 @@ Reach the application:
 http://localhost:8080/ or http://localhost:8080/home
 ```
 
-###Kubernetes
+### Kubernetes
 
 To start working with Kubernetes you need
 + [kubectl](https://kubernetes.io/docs/tasks/tools/)
