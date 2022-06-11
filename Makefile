@@ -12,11 +12,11 @@ maven-start-app-h2: maven-setup
 maven-start-app-postgres: maven-setup
 	./mvnw spring-boot:run -Dspring-boot.run.profiles=dev
 
-docker-init:
+docker-run-db:
+ifeq ($(type),init)
 	docker volume create postgres_data
 	docker network create drones-net
-
-docker-run-db:
+endif
 	docker run -it --rm -d -v postgres_data:/var/lib/postgresql/data \
     --network drones-net \
     --name postgres-db \
@@ -37,8 +37,6 @@ docker-run-app:
     -p 8080:8080 java-drones
 
 docker-start-app: docker-build-app docker-run-app
-
-docker-first-start-app: docker-init-db docker-start-app-server
 
 docker-compose-app:
 	docker-compose up -d --build

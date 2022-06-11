@@ -18,22 +18,16 @@ I've created commands in a Makefile to make the process easier.
 You may configure the application to use in-memory H2 database or Postgres in a docker container. 
 You may install docker from [here](https://docs.docker.com/desktop/).
 
-If you use in-memory database, you do not need any additional configurations.
-If you use postgres, you need to pre-configure docker to launch a database in a container.
-
-####Docker Init
-
-To start the application with Postgres:
-
-> first you need to pre-configure docker. Do it one time for the project.
-Otherwise data will be lost. It creates volume to store your database data.
-
-```
-make docker-init
-```
-
 ####Run the Postgres
-> then run the postgres database
+
+To run the postgres database:
+
+```
+make docker-run-db type=init
+```
+
+When you do it for the first time, use type=init. 
+Afterwards run it without a type.
 
 ```
 make docker-run-db
@@ -79,7 +73,7 @@ http://localhost:8080/ or http://localhost:8080/home
 
 ###Docker
 
-Before starting the application you need to perform Docker Init and Run the Postgres steps.
+Before starting the application you need to perform Run the Postgres step.
 
 To start the application:
 
