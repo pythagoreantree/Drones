@@ -1,7 +1,7 @@
 ## Drones
 ___
 
-![image-drone](./img/Drone.jpg)
+![image-drone](jason-blackeye-XYrjl3j7smo-unsplash.jpg)
 ___
 
 This is a simple REST API Spring Boot application that simulates the delivery of medicines by drones.  
