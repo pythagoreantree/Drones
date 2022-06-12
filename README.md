@@ -1,6 +1,9 @@
 ## Drones
 ___
 
+![image-drone](./img/Drone.jpg)
+___
+
 This is a simple REST API Spring Boot application that simulates the delivery of medicines by drones.  
 
 The full list of requirements for the project you can find in the requirements.md file.
